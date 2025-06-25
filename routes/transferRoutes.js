@@ -6,6 +6,6 @@ const role = require('../middlewares/roleMiddleware');
 
 router.post('/request', auth, role(['commander']), transferController.requestTransfer);
 router.post('/process', auth, role(['logistics']), transferController.processTransfer);
-router.get('/', auth, transferController.getTransfers);
+router.get('/', transferController.getTransfers);
 
 module.exports = router;

@@ -30,6 +30,7 @@ exports.processTransfer = async (req, res) => {
 
 exports.getTransfers = async (req, res) => {
   try {
+    console.log("this is the get transfer")
     const result = await pool.query('SELECT * FROM transfers ORDER BY datetime DESC');
     res.json(result.rows);
   } catch (err) {

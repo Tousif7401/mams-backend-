@@ -1,9 +1,10 @@
 const pool = require('../models/db');
 
 exports.addPurchase = async (req, res) => {
-  const { base_id, asset_id, quantity } = req.body;
-  const log_base_id=req.user.base_id
-  if(base_id===log_base_id){
+  const {  asset_id, quantity } = req.body;
+  const base_id=req.user.base_id
+  console.log(base_id)
+  if(base_id){
   console.log(req.user,"this is the user ")
   try {
     const result = await pool.query('INSERT INTO purchases (base_id, asset_id, quantity) VALUES ($1, $2, $3) RETURNING *', [base_id, asset_id, quantity]);
